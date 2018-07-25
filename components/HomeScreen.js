@@ -1,13 +1,12 @@
 import React from 'react';
 import { View } from 'react-native';
-import Header from "./components/Header.js"
-import SearchBar from './components/SearchBar.js';
-import VideoList from "./components/VideoList.js"
-import {createStackNavigator} from "react-navigation"
+import Header from "./Header.js"
+import SearchBar from "./SearchBar";
+import VideoList from "./VideoList.js"
 const YTSearch = require("youtube-api-search")
-import config from "/config.js"
+import config from "../config.js"
 
-
+console.log(config)
 
 class HomeScreen extends React.Component {
 
@@ -25,13 +24,13 @@ class HomeScreen extends React.Component {
       
       submitSearch=()=>{
         this.setState({loading:true})
-        YTSearch({key: config.apiKey, term:this.state.searchText +" trailer", type:"video"},
+        YTSearch({key: config.apiKeyYoutube, term:this.state.searchText +" trailer", type:"video"},
         ((res)=>{
         this.setState({
         loading: false,
         results:res,
         searchText:"",
-        },()=>{console.log(this.state.results)})
+        },()=>{/*console.log(this.state.results)*/})
         }))
       }   
 

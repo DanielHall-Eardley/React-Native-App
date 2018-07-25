@@ -1,12 +1,12 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
-import HomeScreen from './components/HomeScreen.js';
-import Video from "./components/Video.js"
+import HomeScreen from "./components/HomeScreen.js"
+import VideoScreen from "./components/Video.js"
 
 const RootStack = createStackNavigator(
   {
-    screen: HomeScreen,
-    screan: Video,
+    Home: HomeScreen,
+    Video: VideoScreen,
     
   },
   {
