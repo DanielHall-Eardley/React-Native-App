@@ -6,14 +6,13 @@ import VideoList from "./VideoList.js"
 const YTSearch = require("youtube-api-search")
 import config from "../config.js"
 
-console.log(config)
-
 class HomeScreen extends React.Component {
 
     state={
-        searchText:"",
+        searchText:"New Movie Trailers",
         loading:false,
-        results:[]
+        results:[],
+        movieTitle:""
       }
       
       enterText=(text)=>{
@@ -30,9 +29,14 @@ class HomeScreen extends React.Component {
         loading: false,
         results:res,
         searchText:"",
-        },()=>{/*console.log(this.state.results)*/})
+        movieTitle:this.state.searchText
+        })
         }))
-      }   
+      }
+      
+      componentDidMount(){
+        this.submitSearch()
+      }
 
   render() {
     return (
@@ -43,7 +47,8 @@ class HomeScreen extends React.Component {
         enterText={this.enterText}
         submitSearch={this.submitSearch}/>
         <VideoList results={this.state.results}
-        navigation={this.props.navigation}/>
+        navigation={this.props.navigation}
+        movieTitle={this.state.movieTitle}/>
         </View>
     );
   }
@@ -56,7 +61,6 @@ const styles = {
       backgroundColor: '#d8f2ff',
       alignItems: 'stretch',
       justifyContent: 'flex-start',
-      paddingTop:30
     },
   }
 

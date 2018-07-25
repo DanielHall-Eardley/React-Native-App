@@ -2,23 +2,28 @@ import React from 'react';
 import { StyleSheet, Text, View,
  ScrollView, Image, TouchableHighlight
 } from 'react-native';
+import config from "../config.js"
 
-const VideoList = (props)=>{
+
+class VideoList extends React.Component{
+render(){
 return(
-    <ScrollView>{props.results.map((video, i)=>{
+    <ScrollView>{this.props.results.map((video, i)=>{
         return(
           <View style={styles.listItem} key={video.etag}>
-          <TouchableHighlight onPress={()=>this.props.navigation.navigate("Video")}>
+          <TouchableHighlight onPress={()=>this.props.navigation.navigate("Video", 
+          {itemId:video.id.videoId, title: this.props.movieTitle})}>
           <Image style={styles.image}
           source={{uri: video.snippet.thumbnails.medium.url}}/>
           </TouchableHighlight>
           <Text style={styles.title}>{video.snippet.title}</Text>    
-          <Text>{video.snippet.channelTitle}</Text>
-          <Text>{video.snippet.description}</Text>
+          <Text style={styles.text}> Channel: {video.snippet.channelTitle}</Text>
+          <Text style={styles.text}>Description: {video.snippet.description}</Text>
           </View>
         )
     })}</ScrollView>
 )
+}
 }
 
 styles={
@@ -27,15 +32,23 @@ image:{
     height: 180
     },
 listItem:{
+    flex:1,
     margin: 8,
     backgroundColor: "#a8ffdf",
+    justifyContent: "center",
+    alignItems:"stretch",
     borderRadius:4,
 },
 title:{
 fontSize:16,
 backgroundColor:"#f6ffcc",
-alignSelf: "center",
-padding: 4
+padding: 4,
+alignSelf:"center"
+
+},
+text:{
+    padding: 5,
+    alignSelf:"center"
 }    
 }
 
