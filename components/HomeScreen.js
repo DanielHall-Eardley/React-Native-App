@@ -5,8 +5,9 @@ import SearchBar from './components/SearchBar.js';
 import VideoList from "./components/VideoList.js"
 import {createStackNavigator} from "react-navigation"
 const YTSearch = require("youtube-api-search")
+import config from "/config.js"
 
-const apiKey = "AIzaSyCSbPPXS3p1jntxInrRdyR-MPOvIWGNVLk"
+
 
 class HomeScreen extends React.Component {
 
@@ -24,7 +25,7 @@ class HomeScreen extends React.Component {
       
       submitSearch=()=>{
         this.setState({loading:true})
-        YTSearch({key: apiKey, term:this.state.searchText +" trailer", type:"video"},
+        YTSearch({key: config.apiKey, term:this.state.searchText +" trailer", type:"video"},
         ((res)=>{
         this.setState({
         loading: false,
