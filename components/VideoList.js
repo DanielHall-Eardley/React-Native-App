@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View,
+import { Text, View,
  ScrollView, Image, TouchableHighlight
 } from 'react-native';
 import config from "../config.js"
@@ -12,7 +12,7 @@ return(
         return(
           <View style={styles.listItem} key={video.etag}>
           <TouchableHighlight onPress={()=>this.props.navigation.navigate("Video", 
-          {itemId:video.id.videoId, title: this.props.movieTitle})}>
+          {itemId:video.id.videoId, title: video.snippet.title, apiKeyGoogle: config.apiKeyMoviedb})}>
           <Image style={styles.image}
           source={{uri: video.snippet.thumbnails.medium.url}}/>
           </TouchableHighlight>
@@ -41,14 +41,15 @@ listItem:{
 },
 title:{
 fontSize:16,
-backgroundColor:"#f6ffcc",
+backgroundColor:"#e5ffe2",
 padding: 4,
-alignSelf:"center"
+alignSelf:"stretch",
+textAlign:"center",
 
 },
 text:{
     padding: 5,
-    alignSelf:"center"
+    textAlign:"center"
 }    
 }
 

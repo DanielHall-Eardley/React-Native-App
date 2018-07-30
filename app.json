@@ -1,5 +1,14 @@
 {
   "expo": {
     "sdkVersion": "27.0.0"
+  },
+  "ios":{
+    "supportsTablet":true,
+    "buildNumber": "1"
+  },
+  "android":{
+  "package": "com.danielhall-eardley.movietrailerandplotsearch",
+  "versionCode": 1,
+  "permisions": []
   }
 }

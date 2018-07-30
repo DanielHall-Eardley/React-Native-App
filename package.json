@@ -1,7 +1,9 @@
 {
-  "name": "native_tutorial",
+  "name": "youtube-search",
   "version": "0.1.0",
   "private": true,
+  "description": "A simple app that searches for a movie trailer and plot sumaaray",
+  "author": "Daniel Hall-Eardley",
   "devDependencies": {
     "react-native-scripts": "1.14.0",
     "jest-expo": "~27.0.0",
